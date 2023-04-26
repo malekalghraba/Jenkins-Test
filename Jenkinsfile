@@ -4,7 +4,7 @@ node {
     def dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
     
     stage('Clone Repo') {
-      git 'https://github.com/rhmanou/Jenkins-Test.git'
+      git 'https://github.com/malek.alghraba/Jenkins-Test.git'
     }    
   
     stage('Build Project') {
@@ -17,7 +17,7 @@ node {
     }
     
     stage('Build Docker Image') {
-      sh "docker -H tcp://192.168.8.100:2375 build -t devopsexample:${env.BUILD_NUMBER} ."
+      sh "docker -H tcp://localhost:2375 build -t devopsexample:${env.BUILD_NUMBER} ."
     }
     
     stage('Deploy Docker Image'){
