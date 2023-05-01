@@ -9,8 +9,8 @@ pipeline{
     stage('Build Project') {
       steps{
         script{
-      sh "mvn clean"
-      sh "mvn package"
+    //  sh "mvn clean"
+      //sh "mvn package"
       sh "mvn install"
     }
     }
