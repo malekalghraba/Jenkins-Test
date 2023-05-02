@@ -27,7 +27,7 @@ pipeline{
       steps{
         script {
 	      echo "Docker Image Tag Name: ${dockerImageTag}"
-	      sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:1.0"
+	      sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
                }
             }
                                 }
