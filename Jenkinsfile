@@ -29,7 +29,7 @@ pipeline{
     stage('Deploy Docker Image'){
       steps{
         script {
-	   sh "docker run --name dockerImage  -d -p 2222:2222 dockerImage }"
+	    docker.run("-p 2222:2222${DOCKER_IMAGE_NAME}")
                }
             }
                                 }
