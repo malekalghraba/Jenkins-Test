@@ -1,9 +1,9 @@
 pipeline{
   agent  any
    environment {
-    def mvnHome = tool 'maven-3.5.2'
-    def dockerImage
-    def dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
+   
+    dockerImage
+    dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
     
     }
   stages{
