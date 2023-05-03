@@ -1,7 +1,10 @@
 pipeline{
   agent  any
    environment {
-        DOCKER_IMAGE_NAME = "my-image:${env.BUILD_NUMBER}"
+    def mvnHome = tool 'maven-3.5.2'
+    def dockerImage
+    def dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
+    
     }
   stages{
     stage('Clone Repo') {
@@ -23,13 +26,13 @@ pipeline{
     stage('Build Docker Image') {
       steps{
         script {
-        def dockerImage = docker.build("${DOCKER_IMAGE_NAME}", ".")
+        sh "docker  build -t devopsexample:${env.BUILD_NUMBER} ."
     }
       }}
     stage('Deploy Docker Image'){
       steps{
         script {
-	    docker.run("-p 2222:2222${DOCKER_IMAGE_NAME}")
+	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
                }
             }
                                 }
