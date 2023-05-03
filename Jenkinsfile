@@ -1,5 +1,8 @@
 pipeline{
   agent  any
+   environment {
+        DOCKER_IMAGE_NAME = "my-image:${env.BUILD_NUMBER}"
+    }
   stages{
     stage('Clone Repo') {
       steps{
@@ -20,14 +23,13 @@ pipeline{
     stage('Build Docker Image') {
       steps{
         script {
-      sh "docker  build -t devopsexample:${env.BUILD_NUMBER}  ."
+      sh "docker  build -t DOCKER_IMAGE_NAME  ."
     }
       }}
     stage('Deploy Docker Image'){
       steps{
         script {
-	 
-	      sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
+	   sh "docker run --name DOCKER_IMAGE_NAME -d -p 2222:2222 DOCKER_IMAGE_NAME}"
                }
             }
                                 }
