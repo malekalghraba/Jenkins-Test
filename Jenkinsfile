@@ -23,13 +23,13 @@ pipeline{
     stage('Build Docker Image') {
       steps{
         script {
-      sh "docker  build -t DOCKER_IMAGE_NAME  ."
+        def dockerImage = docker.build("${DOCKER_IMAGE_NAME}", ".")
     }
       }}
     stage('Deploy Docker Image'){
       steps{
         script {
-	   sh "docker run --name DOCKER_IMAGE_NAME -d -p 2222:2222 DOCKER_IMAGE_NAME}"
+	   sh "docker run --name dockerImage  -d -p 2222:2222 dockerImage }"
                }
             }
                                 }
