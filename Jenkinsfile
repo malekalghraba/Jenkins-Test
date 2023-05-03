@@ -1,8 +1,7 @@
 pipeline{
   agent  any
    environment {
-   
-    dockerImage
+  
     dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
     
     }
