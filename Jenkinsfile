@@ -8,9 +8,9 @@ pipeline{
     }
   stages{
     stage('Clone Repo') {
-      steps{
+    
       git 'https://github.com/malekalghraba/Jenkins-Test.git'
-        }}
+        }
  
     stage('Build Project') {
       steps{
